@@ -10,6 +10,10 @@ public class Car {
     private int maxFuel;
     private int currentFuel;
     private int consumption;
+    private double mileage;
+    private int passengers;
+    private int seats;
+    
     
     public Car () {
         this.model = "";
@@ -18,7 +22,9 @@ public class Car {
         this.color = "";
         this.maxFuel = 0;
         this.currentFuel = 0;
-        this.consumption = 0;         
+        this.consumption = 0;
+        this.mileage = 0;
+        this.passengers = 1;
     }
     
     public Car(String customModel, int customBuildYear, String customColor, int customMaxFuel) {
@@ -27,13 +33,15 @@ public class Car {
         this.color = customColor;
         this.maxFuel = customMaxFuel;
     }
-    public Car(String customModel, int customBuildYear, String customColor, int customMaxFuel, int customCurrentFuel, int customConsumption) {
+    public Car(String customModel, int customBuildYear, String customColor, int customMaxFuel, int customCurrentFuel, int customConsumption, double customMileage) {
         this.model = customModel;
         this.buildYear = customBuildYear; 
         this.color = customColor;
         this.maxFuel = customMaxFuel;
         this.currentFuel = customCurrentFuel;
         this.consumption = customConsumption;
+        this.mileage = customMileage;
+        
     }
     
     
@@ -97,6 +105,14 @@ public class Car {
         return this.vehicleType;
     }
     
+    public void setMileage(double customMileage) {
+        this.mileage = customMileage;
+    }
+    
+    public double getMileage() {
+        return this.mileage;
+    }
+    
    public void showData() {
         System.out.println("Model: " + this.getModel());
         System.out.println("Godina proizvodnje: " + this.getBuildYear());
@@ -105,11 +121,12 @@ public class Car {
         System.out.println("Stanje rezervoara: " + this.getCurrentFuel());
         System.out.println("Kapacitet rezervoara je: " + this.getMaxFuel());
         System.out.println("Maksimalna brzina je: " + this.getMaxSpeed());
+        System.out.println("Predjena kilometraza je:" + this.getMileage());
         System.out.println();
     }
     
     
-   public void travel(int distanceTraveled) {
+   public void travel(int distance) {
        //1. definisati novi atribut "mileage"
        //2. napraviti get i set metode
        //3. prosiriti jedan od konstruktora da moze da se setuje i mileage
@@ -117,9 +134,57 @@ public class Car {
        //4.kolicina goriva da se smanji za onoliko koliko je potroseno
        //5.kilometraza treba da se uveca
        
+       //opciono: novi atribut za stanje motora, da li je automobil ukljucen
        
-       //opciono: novi atribut ya stanje motora, da li je automobil ukljucen
+       
+       if (this.getCurrentFuel() > (distance * this.getConsumption()) / 100) {
+           this.mileage = this.getMileage() + distance;
+           this.currentFuel = this.getCurrentFuel() - (distance * this.getConsumption()) / 100;
+           System.out.println("Uspesno ste putovali: " + distance + " kilometara.");
+       } else {
+           System.out.println("Nema dovoljno goriva za put od:" + distance);
+       }
+          
+       
    }
    
-    
+    public void fuelUp (int refill) {
+       int emptySpace = this.getMaxFuel() -this.getCurrentFuel();
+       
+       if (refill < emptySpace) {
+           this.currentFuel = this.getCurrentFuel() + refill;   
+           System.out.println("Uspesno ste sipali " + refill + "Novo stanje je: " + this.getCurrentFuel());      
+        } else {
+           this.currentFuel = this.getMaxFuel();
+           System.out.println("Rezervoar je pun.Sipali ste: " + emptySpace);
+        }
+       
 }
+    
+    //stanje: 30 , pokusavamo  da sipamo 7, Uspesno ste sipali 7 l, novo stanje je 37.
+    //stanje: 30, pokusavamo da sipamo 40. Sipano je 20, rezervoar je pun.
+       public void getIn() {
+           //1 osoba je usla u vozilo
+           if (this.getPassengers() + 1 <= this.getSeats()) {
+               this.setPassengers(this.getPassengers() + 1);
+               System.out.println("Jedna osoba je usla u auto.Novo stanje je: " + this.getPassengers());
+           } else {
+               System.out.println("Automobil je pun.Nema mesta za jos jednog putnika");
+           }
+       }
+       
+       public void getIn(int numerOfPeople) {
+           //numberOfPeople osoba je uslo u vozilo
+       }
+       
+       public void getOut() {
+           //1 osoba je izasla iz vozila
+       }
+       
+       public void getOut(int numerOfPeople) {
+           //numberOfPeople osoba je izaslo iy vozila
+       }
+    
+       
+}
+

@@ -29,7 +29,7 @@ public class Main {
         fiat.setMaxSpeed(170);*/
         
         
-        Car ford = new Car("Ford", 2015, "red", 40, 10, 5); 
+        Car ford = new Car("Ford", 2015, "red", 40, 10, 5, 300); 
         ford.showData();
         
         /*ford.setModel("Ford fiesta");
@@ -39,13 +39,21 @@ public class Main {
         
         //System.out.println("Model: " + ford.getModel());
         
-        Car lad = new Car("Lada Niva", 1980, "green", 50, 40, 12);
+        Car lada = new Car("Lada Niva", 1980, "green", 50, 40, 10, 500);
+        lada.showData();
+        lada.travel(20);
         lada.showData();
         
+        lada.travel(400);
+        lada.showData();
         
+        lada.fuelUp(20);
+        lada.travel(400);
         
+        lada.fuelUp (10);
+        lada.travel(400);
         
-        
+       
         
        // Car peugeot = new Car();
       //  peugeot.model = "Peugeot 3008";
@@ -66,8 +74,7 @@ public class Main {
        // System.out.println("Trenutno stanje goriva: " + peugeot.currentFuel);
        // System.out.println("Maximalna potrosnja: " + peugeot.maxFuel);
         
-        
-        
+    
         
         
         
