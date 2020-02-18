@@ -25,6 +25,7 @@ public class Car {
         this.consumption = 0;
         this.mileage = 0;
         this.passengers = 1;
+        this.seats = 0;
     }
     
     public Car(String customModel, int customBuildYear, String customColor, int customMaxFuel) {
@@ -113,6 +114,21 @@ public class Car {
         return this.mileage;
     }
     
+    public void setPassengers(int customPassengers) {
+      this.passengers = customPassengers;
+    }
+    
+    public int getPassengers() {
+       return this.passengers;
+    }
+    
+    public void setSeats (int customSeats) {
+        this.seats = customSeats;
+    }
+    public int getSeats() {
+        return this.seats;
+    }
+    
    public void showData() {
         System.out.println("Model: " + this.getModel());
         System.out.println("Godina proizvodnje: " + this.getBuildYear());
@@ -142,7 +158,7 @@ public class Car {
            this.currentFuel = this.getCurrentFuel() - (distance * this.getConsumption()) / 100;
            System.out.println("Uspesno ste putovali: " + distance + " kilometara.");
        } else {
-           System.out.println("Nema dovoljno goriva za put od:" + distance);
+           System.out.println("Nema dovoljno goriva za put od: " + distance);
        }
           
        
@@ -153,7 +169,7 @@ public class Car {
        
        if (refill < emptySpace) {
            this.currentFuel = this.getCurrentFuel() + refill;   
-           System.out.println("Uspesno ste sipali " + refill + "Novo stanje je: " + this.getCurrentFuel());      
+           System.out.println("Uspesno ste sipali " + refill + ". Novo stanje je: " + this.getCurrentFuel());      
         } else {
            this.currentFuel = this.getMaxFuel();
            System.out.println("Rezervoar je pun.Sipali ste: " + emptySpace);
@@ -163,28 +179,45 @@ public class Car {
     
     //stanje: 30 , pokusavamo  da sipamo 7, Uspesno ste sipali 7 l, novo stanje je 37.
     //stanje: 30, pokusavamo da sipamo 40. Sipano je 20, rezervoar je pun.
+    
        public void getIn() {
            //1 osoba je usla u vozilo
            if (this.getPassengers() + 1 <= this.getSeats()) {
                this.setPassengers(this.getPassengers() + 1);
-               System.out.println("Jedna osoba je usla u auto.Novo stanje je: " + this.getPassengers());
+               System.out.println("Jedna osoba je usla u auto. Novo stanje je: " + this.getPassengers());
            } else {
-               System.out.println("Automobil je pun.Nema mesta za jos jednog putnika");
+               System.out.println("Automobil je pun. Nema mesta za jos jednog putnika");
            }
        }
        
-       public void getIn(int numerOfPeople) {
+       public void getIn(int numberOfPeople) {
            //numberOfPeople osoba je uslo u vozilo
+           if (this.getPassengers() + numberOfPeople <= this.getSeats()) {
+               this.setPassengers(this.getPassengers() + numberOfPeople);
+               System.out.println(numberOfPeople + " osoba je usla u auto.Novo stanje je: " + this.getPassengers());
+           } else {
+               System.out.println("U automobilu je trenutno " + this.getPassengers() + " putnika. Ne mogu uci jos " + this.getPassengers());
        }
        
        public void getOut() {
            //1 osoba je izasla iz vozila
+          if (this.getPassengers() - 1 <= this.getSeats()) {
+               this.setPassengers(this.getPassengers() - 1);
+               System.out.println("Jedna osoba je izasla iz auta. Novo stanje je: " + this.getPassengers());
+           } else {
+               System.out.println(" U automobilu je nula putnika. Ne mogu izaci jos " + this.getPassengers());
+           }
        }
        
-       public void getOut(int numerOfPeople) {
-           //numberOfPeople osoba je izaslo iy vozila
-       }
-    
-       
+       public void getOut(int numberOfPeople) {
+          //numberOfPeople osoba je izaslo iz vozila
+            if (this.getPassengers() - numberOfPeople <= this.getSeats()) {
+               this.setPassengers(this.getPassengers() - numberOfPeople);
+               System.out.println(numberOfPeople + " osoba je izaslo iz auta. Novo stanje je: " + this.getPassengers());
+           } else {
+               System.out.println("U automobilu je trenutno nula putnika. Ne mogu izaci jos " + this.getPassengers());
+       }   
 }
-
+       
+ 
+       

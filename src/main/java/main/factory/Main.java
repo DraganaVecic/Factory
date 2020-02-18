@@ -74,11 +74,18 @@ public class Main {
        // System.out.println("Trenutno stanje goriva: " + peugeot.currentFuel);
        // System.out.println("Maximalna potrosnja: " + peugeot.maxFuel);
         
-    
-        
-        
-        
-        
+       lada.setPassengers(2);
+       lada.showData();
+       
+       lada.getIn();
+       lada.getIn();
+       lada.getOut();
+       lada.getIn(3);
+       lada.getIn(8);
+       lada.getOut(10);
+       lada.getOut(2);
+       lada.getOut(1);
+       lada.getOut(1);
         
         
     }
