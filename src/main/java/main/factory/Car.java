@@ -160,8 +160,6 @@ public class Car {
        } else {
            System.out.println("Nema dovoljno goriva za put od: " + distance);
        }
-          
-       
    }
    
     public void fuelUp (int refill) {
@@ -192,7 +190,7 @@ public class Car {
        
        public void getIn(int numberOfPeople) {
            //numberOfPeople osoba je uslo u vozilo
-           if (this.getPassengers() + numberOfPeople <= this.getSeats()) {
+          if (this.getPassengers() + numberOfPeople <= this.getSeats()) {
                this.setPassengers(this.getPassengers() + numberOfPeople);
                System.out.println(numberOfPeople + " osoba je usla u auto.Novo stanje je: " + this.getPassengers());
            } else {
@@ -201,23 +199,24 @@ public class Car {
        
        public void getOut() {
            //1 osoba je izasla iz vozila
-          if (this.getPassengers() - 1 <= this.getSeats()) {
+         /* if (this.getPassengers() - 1 <= this.getSeats()) {
                this.setPassengers(this.getPassengers() - 1);
                System.out.println("Jedna osoba je izasla iz auta. Novo stanje je: " + this.getPassengers());
            } else {
-               System.out.println(" U automobilu je nula putnika. Ne mogu izaci jos " + this.getPassengers());
+               System.out.println(" U automobilu je nema putnika. Ne mogu izaci jos " + this.getPassengers());
            }
-       }
+       }*/
        
+         
        public void getOut(int numberOfPeople) {
           //numberOfPeople osoba je izaslo iz vozila
-            if (this.getPassengers() - numberOfPeople <= this.getSeats()) {
+          /*  if (this.getPassengers() - numberOfPeople <= this.getSeats()) {
                this.setPassengers(this.getPassengers() - numberOfPeople);
                System.out.println(numberOfPeople + " osoba je izaslo iz auta. Novo stanje je: " + this.getPassengers());
            } else {
-               System.out.println("U automobilu je trenutno nula putnika. Ne mogu izaci jos " + this.getPassengers());
+               System.out.println("U automobilu trenutno nema putnika. Ne mogu izaci jos " + this.getPassengers());
        }   
-}
+}*/
        
  
        
